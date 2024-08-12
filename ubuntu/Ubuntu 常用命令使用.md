@@ -67,12 +67,15 @@ netstat -antlp|awk '/tcp/ {print $6}'|sort|uniq -c
     sudo ncdu / 
 ```
 
-## 8. 扩展逻辑分区
+## 8. 扩展未使用的逻辑卷
 ```text
-1. 增大逻辑卷
+1. 查看磁盘使用情况
+lsblk -l
+
+2. 增大逻辑卷
 sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv && sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 
-2. 刷新磁盘
+3. 刷新磁盘
 sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 ```
 
